@@ -22,6 +22,7 @@ def main():
         print("3. Show top Pokémon by stat")
         print("4. Show type distribution pie chart")
         print("5. Exit")
+        print("6. Export DataFrame to CSV")
 
         choice = input("Enter your choice (1-5): ").strip()
 
@@ -48,6 +49,12 @@ def main():
         elif choice == "5":
             print("👋 Exiting. Thanks for using PokeStats Explorer!")
             break
+        elif choice == "6":
+            filename = input("Enter filename (default: pokemon_data.csv): ").strip()
+            if filename == "":
+                filename = "pokemon_data.csv"
+            from data_utils import export_to_csv
+            export_to_csv(df, filename)
 
         else:
             print("Invalid choice. Try again.")
