@@ -21,7 +21,15 @@ Built with: Python, pandas, matplotlib
 
 ## 🖼️ Preview
 
-Coming soon — screenshots or GIFs of CLI and visual charts
+### 📟 CLI Menu
+![CLI Menu](Screenshots/Screenshot1.png)
+
+### 📊 Bar Chart (Top Stats)
+![Bar Chart](Screenshots/Screenshot3.png)
+
+### 🥧 Type Distribution Pie Chart
+![Pie Chart](Screenshots/Screenshot2.png)
+
 
 ---
 
@@ -44,11 +52,16 @@ python main.py
 
 Project Structure:
 
-poke_api.py      # Fetches + caches API data
-data_utils.py    # Filtering, sorting, and export logic
-visuals.py       # Chart and graph rendering
-main.py          # CLI interface
-cache/           # Stored Pokémon data (JSON)
+poke_api.py      
+# Fetches + caches API data
+data_utils.py    
+# Filtering, sorting, and export logic
+visuals.py       
+# Chart and graph rendering
+main.py          
+# CLI interface
+cache/           
+# Stored Pokémon data (JSON)
 
 📝 Notes 
 Requires internet connection for initial fetches
