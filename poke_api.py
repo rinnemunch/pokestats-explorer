@@ -27,3 +27,17 @@ def get_pokemon_stats_as_df(name):
         stats[stat_name] = stat["base_stat"]
 
     return pd.DataFrame([stats])
+
+
+def get_multiple_pokemon(names):
+    all_data = []
+
+    for name in names:
+        df = get_pokemon_stats_as_df(name)
+        if df is not None:
+            all_data.append(df)
+
+    if all_data:
+        return pd.concat(all_data, ignore_index=True)
+    else:
+        return pd.DataFrame()
