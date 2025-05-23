@@ -25,7 +25,7 @@ def main():
         print("6. Export DataFrame to CSV")
         print("7. Clear local cache")
 
-        choice = input("Enter your choice (1-5): ").strip()
+        choice = input("Enter your choice (1-7): ").strip()
 
         if choice == "1":
             print(df)
