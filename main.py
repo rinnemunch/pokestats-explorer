@@ -1,6 +1,6 @@
 from poke_api import get_multiple_pokemon
 from data_utils import filter_by_type, sort_by_stat
-from visuals import plot_top_stat
+from visuals import plot_top_stat, plot_type_distribution
 
 names = ["Pikachu", "Charizard", "Bulbasaur", "Gengar", "Jolteon", "Machamp"]
 df = get_multiple_pokemon(names)
@@ -15,3 +15,4 @@ if not df.empty:
     print(top_speed)
 
 plot_top_stat(df, "Attack", top_n=5)
+plot_type_distribution(df)
