@@ -1,9 +1,14 @@
 from poke_api import get_multiple_pokemon
+from data_utils import filter_by_type, sort_by_stat
 
-pokemon_names = ["Pikachu", "Charizard", "Bulbasaur", "Gengar"]
-df = get_multiple_pokemon(pokemon_names)
+names = ["Pikachu", "Charizard", "Bulbasaur", "Gengar", "Jolteon", "Machamp"]
+df = get_multiple_pokemon(names)
 
 if not df.empty:
-    print(df)
-else:
-    print("No valid Pokémon found.")
+    electric_df = filter_by_type(df, "Electric")
+    print("\nElectric Type Pokémon:")
+    print(electric_df)
+
+    top_speed = sort_by_stat(df, "Speed", top_n=3)
+    print("\nTop 3 by Speed:")
+    print(top_speed)
