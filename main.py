@@ -1,5 +1,6 @@
 from poke_api import get_multiple_pokemon
 from data_utils import filter_by_type, sort_by_stat
+from visuals import plot_top_stat
 
 names = ["Pikachu", "Charizard", "Bulbasaur", "Gengar", "Jolteon", "Machamp"]
 df = get_multiple_pokemon(names)
@@ -12,3 +13,5 @@ if not df.empty:
     top_speed = sort_by_stat(df, "Speed", top_n=3)
     print("\nTop 3 by Speed:")
     print(top_speed)
+
+plot_top_stat(df, "Attack", top_n=5)
