@@ -1,8 +1,5 @@
-from poke_api import get_pokemon
+from poke_api import get_pokemon_stats_as_df
 
-pokemon = get_pokemon("Pikachu")
-if pokemon:
-    print(f"Name: {pokemon['name'].title()}")
-    print("Stats: ")
-    for stat in pokemon['stats']:
-        print(f" {stat['stat']['name'].title()}: {stat['base_stat']}")
+df = get_pokemon_stats_as_df("Charizard")
+if df is not None:
+    print(df)

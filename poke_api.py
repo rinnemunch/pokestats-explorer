@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 
 
 def get_pokemon(name):
@@ -9,3 +10,20 @@ def get_pokemon(name):
     else:
         print("Pokémon not found.")
         return None
+
+
+def get_pokemon_stats_as_df(name):
+    data = get_pokemon(name)
+    if not data:
+        return None
+
+    stats = {
+        "Name": name.title(),
+        "Type(s)": ", ".join([t["type"]["name"].title() for t in data["types"]])
+    }
+
+    for stat in data["stats"]:
+        stat_name = stat["stat"]["name"].title()
+        stats[stat_name] = stat["base_stat"]
+
+    return pd.DataFrame([stats])
