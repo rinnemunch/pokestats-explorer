@@ -30,7 +30,6 @@ def get_pokemon(name):
         return None
 
 
-
 def get_pokemon_stats_as_df(name):
     data = get_pokemon(name)
     if not data:
@@ -60,3 +59,11 @@ def get_multiple_pokemon(names):
         return pd.concat(all_data, ignore_index=True)
     else:
         return pd.DataFrame()
+
+
+def clear_cache():
+    for filename in os.listdir(CACHE_DIR):
+        file_path = os.path.join(CACHE_DIR, filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+    print("🧹 Cache cleared.")

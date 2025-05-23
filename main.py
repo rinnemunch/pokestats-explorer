@@ -23,6 +23,7 @@ def main():
         print("4. Show type distribution pie chart")
         print("5. Exit")
         print("6. Export DataFrame to CSV")
+        print("7. Clear local cache")
 
         choice = input("Enter your choice (1-5): ").strip()
 
@@ -55,6 +56,9 @@ def main():
                 filename = "pokemon_data.csv"
             from data_utils import export_to_csv
             export_to_csv(df, filename)
+        elif choice == "7":
+            from poke_api import clear_cache
+            clear_cache()
 
         else:
             print("Invalid choice. Try again.")
