@@ -1,15 +1,34 @@
 import requests
 import pandas as pd
+import os
+import json
+
+CACHE_DIR = "cache"
+os.makedirs(CACHE_DIR, exist_ok=True)
 
 
 def get_pokemon(name):
-    url = f"https://pokeapi.co/api/v2/pokemon/{name.lower()}"
+    name = name.lower()
+    cache_path = os.path.join(CACHE_DIR, f"{name}.json")
+
+    if os.path.exists(cache_path):
+        with open(cache_path, "r") as file:
+            print(f"📁 Loaded {name} from cache")
+            return json.load(file)
+
+    url = f"https://pokeapi.co/api/v2/pokemon/{name}"
     response = requests.get(url)
+
     if response.status_code == 200:
-        return response.json()
+        data = response.json()
+        with open(cache_path, "w") as file:
+            json.dump(data, file)
+        print(f"🌐 Fetched {name} from API and cached it")
+        return data
     else:
-        print("Pokémon not found.")
+        print(f"❌ Pokémon '{name}' not found.")
         return None
+
 
 
 def get_pokemon_stats_as_df(name):
